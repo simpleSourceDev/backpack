@@ -12,8 +12,16 @@ buildscript {
     }
 }
 
+def isReleaseBuild() {
+    return version.contains("SNAPSHOT") == false
+}
+
 allprojects {
     repositories {
         jcenter()
+        // for publishing
+        maven { url 'https://oss.sonatype.org/content/groups/public' }
     }
 }
+
+apply plugin: 'android-reporting'
